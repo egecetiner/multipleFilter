@@ -10,7 +10,7 @@ import React, {FunctionComponent} from 'react';
 import rows from '../data/data';
 import {dataStore} from '../stores/dataStore';
 
-export const Marka: FunctionComponent<any> = observer((props) => {
+export const Marka: FunctionComponent<any> = observer(() => {
   const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -52,8 +52,6 @@ export const Marka: FunctionComponent<any> = observer((props) => {
     ({seri}, index) => !seriler.includes(seri, index + 1),
   );
 
-  console.log('bb', dataStore.seri);
-
   return (
     <TableContainer sx={{marginBottom: 3}} component={Paper}>
       <Table aria-label='simple table'>
@@ -74,7 +72,7 @@ export const Marka: FunctionComponent<any> = observer((props) => {
                     <StyledTableCell key={x.km}>
                       <Checkbox
                         checked={dataStore.seri.some(
-                          (item: any) => (item = x.seri),
+                          (item: any) => item === x.seri,
                         )}
                         onChange={() => {
                           onClick(x.seri);
